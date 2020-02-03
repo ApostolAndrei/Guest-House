@@ -1,0 +1,293 @@
+/*HOME */
+
+h1 {
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.sticky {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0px;
+}
+
+a .hide {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-image: url('black2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-size: 17px;
+}
+
+.lightb {
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: white;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    display: inline-block;
+    border: none;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    z-index: 1
+}
+
+.discob {
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: red;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    display: inline-block;
+    border: none;
+    position: absolute;
+    top: 60px;
+    right: 5px;
+    z-index: 1
+}
+
+.discob:hover {
+    border: 1px solid red;
+    cursor: pointer;
+}
+
+.darkb {
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: black;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    display: inline-block;
+    border: none;
+    position: absolute;
+    top: 30px;
+    right: 5px;
+    z-index: 2;
+}
+
+.lightb:hover {
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.darkb:hover {
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+#content {
+    color: white;
+    margin-right: 20px;
+    margin-left: 140px;
+    float: left;
+}
+
+.img_princ {
+    widows: 200px;
+    height: 200px;
+    margin-right: 10px;
+    position: relative;
+    float: left;
+}
+
+.sidenav {
+    height: 100%;
+    width: 120px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0%;
+    padding-top: 20px;
+}
+
+.hide {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    display: block;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.hide:hover {
+    color: white;
+}
+
+.sidenav a,
+.dropbtn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.sidenav a:hover,
+.dropbtn:hover {
+    color: grey;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: black;
+    padding-left: 8px;
+}
+
+.dropdown-content:hover {
+    display: block;
+}
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content a {
+    color: grey;
+    font-size: 13px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/*GALERIE*/
+
+div.gallery {
+    margin: 5px;
+    float: left;
+    width: 180px;
+    display: inline-block;
+}
+
+div.gallery img {
+    width: auto;
+    height: auto;
+}
+
+.content-gal {
+    margin-left: 220px;
+    margin-right: 150px;
+    margin-top: 150px;
+}
+
+
+/*TARIF*/
+
+#prices {
+    border: 2px solid white;
+    border-collapse: collapse;
+    width: 50%;
+    margin-top: 150px;
+    color: black;
+    visibility: visible;
+}
+
+#prices th,
+td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    height: 50px;
+}
+
+#prices tr:nth-of-type(2n) {
+    background-color: rgb(211, 207, 207);
+}
+
+#prices tr:nth-of-type(2n+1) {
+    background-color: whitesmoke;
+}
+
+#prices th {
+    background-color: rgb(27, 61, 22);
+    color: white;
+}
+
+
+/*LOCATIE*/
+
+iframe {
+    -webkit-transition: width 1s;
+    width: 30%;
+    height: 260px;
+}
+
+iframe:hover {
+    width: 100%;
+    height: 460px;
+}
+
+
+/*DOTARI*/
+
+ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 5px;
+    justify-content: space-evenly;
+    padding: 0;
+    height: 650px;
+}
+
+ul>li {
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    border: 1px solid black;
+    background-color: rgb(215, 218, 55);
+    animation-name: spin;
+    animation-duration: 1s;
+    color: black;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    ul>li {
+        background-color: black;
+        color: rgb(215, 218, 55);
+    }
+    #prices tr {
+        height: 90px;
+    }
+    body {
+        font-size: 0.9em;
+        background-size: cover;
+    }
+}

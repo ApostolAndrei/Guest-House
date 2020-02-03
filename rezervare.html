@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<body>
+
+    <head>
+
+        <link rel="stylesheet" href="pensiune.css"></link>
+        <script src="pensiune.js"></script>
+    </head>
+
+    <header>
+        <h1>REZERVARE</h1>
+    </header>
+
+    <body id="bd">
+
+
+        <div id="form">
+            <h3>Introduceti datele rezervarii:</h3>
+
+
+            <input type="text" placeholder="Anul" id="anul" class="myText">
+            <br><br><input type="text" placeholder="Luna" class="myText" id="luna">
+            <br><br><input type="text" placeholder="Ziua" class="myText" id="ziua">
+
+            <br><br><input type="text" placeholder="Numar nopti" class="myText" id="nopti">
+            <br><br><input type="text" class="myText" list="camere" placeholder="Camera" id="camera">
+            <datalist id="camere">
+      <option value="Camera Dubla">
+      <option value="Camera Twin">
+      <option value="Camera Tripla">
+      <option value="Apartamanet">
+    </datalist>
+            <br><br><input type="radio" id="termeni">Am citit termenii si conditiile
+            <br><br><input type="radio" id="!termeni">Nu am citit termenii si conditiile
+            <br><br><button id="sumbit">REZERVA</button>
+            <p id="hide"></p>
+            <p id="hide2"></p>
+        </div>
+
+        <div id="myProgress">
+            <div id="myBar">10%</div>
+        </div>
+
+
+
+
+
+    </body>
+
+
+    <style>
+        body {
+            text-align: center;
+        }
+        
+        input[type=text] {
+            width: 50%;
+            font-size: 17px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5%;
+        }
+        
+        .rezervare {
+            width: 50%;
+            background-color: black;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        #myProgress {
+            width: 100%;
+            background-color: #ddd;
+        }
+        
+        .LoadingBar {
+            width: 10%;
+            height: 30px;
+            background-color: black;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+
+
+
+
+            var input = document.getElementById("camera");
+            input.addEventListener("keyup", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    document.getElementById("sumbit").click();
+                }
+            });
+
+            document.getElementById("sumbit").className = "rezervare";
+            document.getElementById("myBar").classList.add("LoadingBar");
+
+
+            var book = document.getElementsByClassName("rezervare")
+
+            book[0].onclick = function() {
+                var an = document.getElementById("anul").value
+                var zi = document.getElementById("ziua").value
+                var luna = document.getElementById("luna").value
+                var campuri = document.getElementsByClassName("myText")
+                var check = 1;
+                var date = new Date()
+                var j = 0;
+                var txt = '{"color":"yellow"}'
+                var set = JSON.parse(txt)
+
+
+                for (let i of campuri) {
+                    if (i.value == 0) {
+
+                        i.style.backgroundColor = set.color;
+                        check = 0;
+                    }
+                }
+
+                if (check == 0)
+                    alert("Toate campurile trebuie completate")
+
+                else {
+
+                    if (document.getElementById("!termeni").checked == 1)
+                        alert("Inainte de a face rezervarea trebuie sa cititi termenii si conditiile")
+                    else {
+                        if (document.getElementById("termeni").checked == 0)
+                            alert("Trebuie sa bifati una dintre casute")
+
+
+                        else {
+                            if (date.getFullYear() > an || date.getFullYear() == an && date.getMonth() > luna || date.getFullYear() == an && date.getMonth() == luna && date.getUTCDate() > zi)
+
+                                alert("Data introdusa nu este valabila")
+                            else {
+
+                                if (j == 0) {
+                                    j = 1;
+                                    var elem = document.getElementById("myBar");
+                                    var width = 10;
+                                    var id = setInterval(frame, 5, "Vizita placuta!");
+
+                                    function frame(param1) {
+
+                                        document.getElementById("hide2").innerHTML = param1;
+                                        if (width >= 100) {
+
+                                            clearInterval(id);
+                                            document.getElementById("hide2").innerHTML = param1;
+                                            alert("Rezervarea de " + document.getElementById("nopti").value + " nopti pentru  data de " + zi + "/" + luna + "/" + an + " a fost confirmata")
+                                            localStorage.setItem("mesaj", "Va multumim pentru rezervare!")
+                                            document.getElementById("hide").innerHTML = localStorage.getItem("mesaj")
+                                            j = 0;
+                                        } else {
+                                            width++;
+                                            elem.style.width = width + "%";
+                                            elem.innerHTML = width + "%";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
